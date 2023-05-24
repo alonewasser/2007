@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить вопрос</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var questionCount = 1;
+
+            $('#addQuestion').click(function() {
+                var questionHTML = '<div class="question">';
+                questionCount++;
+                questionHTML += '<h3>Вопрос ' + questionCount + '</h3>';
+                questionHTML += '<label for="question-' + questionCount + '">Вопрос:</label>';
+                questionHTML += '<input type="text" name="question-' + questionCount + '" required><br><br>';
+                questionHTML += '<label for="option1-' + questionCount + '">Вариант 1:</label>';
+                questionHTML += '<input type="text" name="option1-' + questionCount + '" required><br>';
+                questionHTML += '<label for="option2-' + questionCount + '">Вариант 2:</label>';
+                questionHTML += '<input type="text" name="option2-' + questionCount + '" required><br>';
+                questionHTML += '<label for="option3-' + questionCount + '">Вариант 3:</label>';
+                questionHTML += '<input type="text" name="option3-' + questionCount + '" required><br>';
+                questionHTML += '<label for="option4-' + questionCount + '">Вариант 4:</label>';
+                questionHTML += '<input type="text" name="option4-' + questionCount + '" required><br><br>';
+                questionHTML += '<label for="correct_option-' + questionCount + '">Правильный вариант:</label>';
+                questionHTML += '<select name="correct_option-' + questionCount + '" required>';
+                questionHTML += '<option value="option1-' + questionCount + '">Вариант 1</option>';
+                questionHTML += '<option value="option2-' + questionCount + '">Вариант 2</option>';
+                questionHTML += '<option value="option3-' + questionCount + '">Вариант 3</option>';
+                questionHTML += '<option value="option4-' + questionCount + '">Вариант 4</option>';
+                questionHTML += '</select><br><br>';
+                questionHTML += '</div>';
+
+                $('#questionsContainer').append(questionHTML);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Добавить вопросы</h1>
+    <form action="/courses/{{ add_test_id }}/add_test" method="POST">
+        <div id="questionsContainer">
+            <div class="question">
+                <h3>Вопрос 1</h3>
+                <label for="question-1">Вопрос:</label>
+                <input type="text" name="question-1" required><br><br>
+
+                <label for="option1-1">Вариант 1:</label>
+                <input type="text" name="option1-1" required><br>
+
+                <label for="option2-1">Вариант 2:</label>
+                <input type="text" name="option2-1" required><br>
+
+                <label for="option3-1">Вариант 3:</label>
+                <input type="text" name="option3-1" required><br>
+
+                <label for="option4-1">Вариант 4:</label>
+                <input type="text" name="option4-1" required><br><br>
+
+                <label for="correct_option-1">Правильный вариант:</label>
+                <select name="correct_option-1" required>
+                    <option value="option1-1">Вариант 1</option>
+                    <option value="option2-1">Вариант 2</option>
+                    <option value="option3-1">Вариант 3</option>
+                    <option value="option4-1">Вариант 4</option>
+                </select><br><br>
+            </div>
+        </div>
+
+        <button type="button" id="addQuestion">Добавить вопрос</button><br><br>
+
+        <input type="submit" value="Сохранить вопросы">
+    </form>
+</body>
+</html>

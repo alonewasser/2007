@@ -1,0 +1,18 @@
+<!-- course_details.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Details</title>
+</head>
+<body>
+    {% if token %}
+  <h2>Доступные курсы:</h2>
+  <ul>
+    {% for course in courses %}
+      <li>{{ course.title }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+</body>
+</html>
